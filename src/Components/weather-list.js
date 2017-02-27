@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Chart from './chart';
-export default class WeatherList extends Component {
-  renderWeather(cityData) {
+
+const renderWeather = (cityData) => {
     const temps = cityData.list.map(listItem => listItem.main.temp);
     const press = cityData.list.map(listItem => listItem.main.pressure);
     const hums = cityData.list.map(listItem => listItem.main.humidity);
@@ -12,9 +12,9 @@ export default class WeatherList extends Component {
         <td><Chart data={press} color="black" units="hPa" /></td>
         <td><Chart data={hums} color="blue" units="%" /></td>
       </tr>
-    );
+    )
   }
-  render() {
+ export default ({weather}) => {
     return (
       <table className="table table-hover">
         <thead>
@@ -26,10 +26,10 @@ export default class WeatherList extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.weather.map(this.renderWeather)}
+          {weather.map(renderWeather)}
         </tbody>
       </table>
     );
   }
-}
+
 

@@ -14,14 +14,14 @@ const fetchWeather = (city) => {
 export default class App extends Component {
   constructor() {
     super()
-    this.state = { weatherdata: [], city: '' }
+    this.state = { weatherdata: []}
   }
   updateState(city) {
     fetchWeather(city)
       .then((weatherResponse) => {
-        const array = this.state.weatherdata
-        array.push(weatherResponse.data)
-        this.setState({ weatherdata: array, city: city })
+        const weatherDataArray = this.state.weatherdata
+        weatherDataArray.push(weatherResponse.data)
+        this.setState({ weatherdata: weatherDataArray})
       }).catch((err) => {
         console.log(err)
       })
